@@ -1,6 +1,14 @@
+import os
+from dotenv import load_dotenv
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyAhpLODE-P8UxU6UxQtb361SFuN5yiky_I")
+# ---------------------------
+# 1. Configuração
+# ---------------------------
+load_dotenv()
+
+
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 for m in genai.list_models():
     print(m.name, m.supported_generation_methods)
